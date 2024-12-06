@@ -7,15 +7,8 @@ use App\Http\Controllers\studentController;
 
 Route::get('/students',[studentController::class,'index']);
 Route::get('/students/{id}',[studentController::class,'showOne']);
-
 Route::post('/students',[studentController::class,'save']);
-
-
-
-Route::put('/students/{id}', function () {
-    return "Students update";
-});
-
+Route::put('/students/{id}',[studentController::class,'update']);
 Route::delete('/students/{id}',[studentController::class,'deploy']);
 
 

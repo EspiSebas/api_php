@@ -47,23 +47,46 @@ class studentController extends Controller
     public function showOne($id){
         $student = Student::find($id);
 
-        if(!$student -> isEmpty()){
-            return response()->json($student,200);
-        }else{
-            return 'it doesnt exist !!!';
+        if(!$student){
+            return 'There is not student!';
         }
+
+        return response()->json($student,200);
+
     }
 
     public function deploy($id){
+        $student_find = Student::find($id);
+        
+        $student_find->delete();
+        return "removed";
+    }
+
+    public function update(Request $request,$id){
         $student = Student::find($id);
 
-        if(!$student -> isEmpty()){
-            $student->delete();
-            return 'Removed correctly';
 
-        }else{
-            return 'it doesnt exist !!!';
+
+        $validator = Validator::make($request->all(),[
+
+            'name' => 'required',
+            'email' => 'required|email',
+            'number_phone' => 'required'
+        ]);
+
+        if($validator ->fails()){
+            return 'Mistake when you text the data';
         }
+            
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->number_phone = $request->number_phone;
+        
+        $student->save();
+
+        return "Updated student $student";
+
+
     }
 
 
