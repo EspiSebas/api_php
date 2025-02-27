@@ -11,13 +11,14 @@ class studentController extends Controller
     public function index(){
 
 
-        $students = Student::all();
+       $students = Student::all();
+       
         if(!$students -> isEmpty()){
             return response()->json($students,200);
         }else{
             return 'This is empty';
         }
-
+    
     }
 
     public function save(Request $request){

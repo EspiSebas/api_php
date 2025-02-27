@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\studentController;
+use App\Http\Controllers\SubjectController;
+
 
 Route::get('/students',[studentController::class,'index']);
 Route::get('/students/{id}',[studentController::class,'showOne']);
@@ -12,6 +14,9 @@ Route::put('/students/{id}',[studentController::class,'update']);
 Route::delete('/students/{id}',[studentController::class,'deploy']);
 
 
+Route::get('/subject',[SubjectController::class,'index']);
+
+Route::post('/subject',[SubjectController::class,'saveSubject']);
 
 
 
