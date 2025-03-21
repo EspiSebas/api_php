@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class studentController extends Controller
 {
-    public function index(){
 
+    public function index(){
 
        $students = Student::all();
        
@@ -45,7 +45,7 @@ class studentController extends Controller
 
     }
 
-    public function showOne($id){
+    public function showOne($id){        
         $student = Student::find($id);
 
         if(!$student){
