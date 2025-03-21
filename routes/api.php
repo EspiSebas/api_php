@@ -16,13 +16,15 @@ Route::delete('/students/{id}',[studentController::class,'deploy']);
 
 Route::get('/subject',[SubjectController::class,'index']);
 Route::post('/subject',[SubjectController::class,'saveSubject']);
-Route::put('/subject',[SubjectController::class,'updateSubject']);
-Route::delete('/subject',[SubjectController::class,'deploySubjet']);
-
-Route::get('/subject',[SubjectController::class,'showOne']);
+Route::put('/subject/{id}',[SubjectController::class,'updateSubject']);
+Route::delete('/subject/{id}',[SubjectController::class,'deploySubjet']);
+Route::get('/subject/{id}',[SubjectController::class,'showOne']);
 
 Route::get('/teacher',[TeachersController::class,'index']);
+Route::get('/teacher/{id}',[TeachersController::class,'showOne']);
 Route::post('/teacher',[TeachersController::class,'saveTeacher']);
+Route::delete('/teacher/{id}',[TeachersController::class,'deployTeacher']);
+Route::put('/teacher/{id}',[TeachersController::class,'updateTeacher']);
 
 
 
