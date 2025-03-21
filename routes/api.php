@@ -15,9 +15,11 @@ Route::delete('/students/{id}',[studentController::class,'deploy']);
 
 
 Route::get('/subject',[SubjectController::class,'index']);
-
 Route::post('/subject',[SubjectController::class,'saveSubject']);
+Route::put('/subject',[SubjectController::class,'updateSubject']);
+Route::delete('/subject',[SubjectController::class,'deploySubjet']);
 
+Route::get('/subject',[SubjectController::class,'showOne']);
 
 Route::get('/teacher',[TeachersController::class,'index']);
 Route::post('/teacher',[TeachersController::class,'saveTeacher']);
