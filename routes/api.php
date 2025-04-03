@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\SubjectController;
-
+use App\Http\Controllers\UserController;
 
 Route::get('/students',[studentController::class,'index']);
 Route::get('/students/{id}',[studentController::class,'showOne']);
@@ -25,6 +25,18 @@ Route::get('/teacher/{id}',[TeachersController::class,'showOne']);
 Route::post('/teacher',[TeachersController::class,'saveTeacher']);
 Route::delete('/teacher/{id}',[TeachersController::class,'deployTeacher']);
 Route::put('/teacher/{id}',[TeachersController::class,'updateTeacher']);
+
+
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('/register',[UserController::class,'register'])->name('register');;
+    Route::post('/login',[UserController::class,'login'])->name('login');
+    Route::get('/user', [UserController::class, 'user'])->middleware('auth:api')->name('user');
+    Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api')->name('logout');
+});
 
 
 
